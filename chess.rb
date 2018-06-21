@@ -14,14 +14,7 @@ class Chess
 
   def initialize(piece, position, target = nil)
 
-    @piece = case piece
-             when 'Rook'
-               Rook.new
-             when 'Knight'
-               Knight.new
-             when 'Queen'
-               Queen.new
-             end if valid_piece? piece
+    @piece = eval(piece).new if valid_piece? piece
 
     @position = {
         x: ROWS.index(position[0]),
@@ -52,6 +45,7 @@ class Chess
 STR
       puts str
     end
+    
     minimum_set_of_moves do |target|
       str = <<STR
 
