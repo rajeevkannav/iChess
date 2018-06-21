@@ -1,4 +1,5 @@
 class Piece
+
   def possible_moves?(from, in_directions, max_steps = 8)
     moves = []
 
@@ -30,6 +31,7 @@ class Piece
       current = queue[0]
       queue = queue[1..-1]
     end
+    
     current
   end
 
@@ -41,4 +43,5 @@ class Piece
     end
     history
   end
+
 end

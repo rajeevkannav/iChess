@@ -1,4 +1,5 @@
 class Square
+
   attr_reader :x, :y, :previous
 
   def initialize(x, y, previous = nil)
@@ -22,4 +23,5 @@ class Square
   def position
     to_a
   end
+
 end

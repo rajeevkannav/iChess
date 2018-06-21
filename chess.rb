@@ -45,7 +45,7 @@ class Chess
 STR
       puts str
     end
-    
+
     minimum_set_of_moves do |target|
       str = <<STR
 
@@ -59,10 +59,8 @@ STR
 
   private
 
-  def generate_random_opp_pieces
-    opposing_pieces_position = []
-
-    OPPOSING_PIECES.times do
+  def generate_random_opp_pieces(opposing_pieces_position = [])
+    8.times do
       begin
         position = [rand(0..7), rand(0..7)]
       end while position == [@position[:x], @position[:y]]
@@ -72,9 +70,7 @@ STR
     opposing_pieces_position
   end
 
-  def most_distant_tile
-    distance = 0
-    max_distant_title = nil
+  def most_distant_tile(distance = 0, max_distant_title = nil)
     generate_random_opp_pieces.each do |to|
       d = Math.sqrt(((@position[:x] - to[0]).abs ** 2) + ((@position[:y] - to[1]).abs ** 2))
       if d >= distance
@@ -97,7 +93,7 @@ STR
   end
 
   def valid_target? target
-    (puts 'Invalid Target' and exit) unless WHITE == target || BLACK == target
+    (puts 'Invalid Target' and exit) unless COLORS.include?(target)
     true
   end
 
